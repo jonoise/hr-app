@@ -1,0 +1,15 @@
+{
+    "name": "lifespikes/reviews",
+    "autoload": {
+        "psr-4": {
+            "Lifespikes\\Reviews\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lifespikes\\Reviews\\ReviewsServiceProvider"
+            ]
+        }
+    }
+}
