@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
+use Lifespikes\Employees\Models\Employee;
+use Lifespikes\Employees\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +18,10 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
 Route::get('/', function () {
-    return view('welcome');
+return Inertia::render('Home/Index');
 });
+
+Route::resources([
+    '/employees' => EmployeeController::class,
+]);

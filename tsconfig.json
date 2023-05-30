@@ -15,12 +15,13 @@
         "noEmit": true,
         "jsx": "react-jsx",
         "sourceMap": true,
-        "baseUrl": ".",
+        "baseUrl": "./",
         "target": "ES2021",
         "types": ["vite/client"],
         "typeRoots": ["node_modules/@types", "resources/js/types"],
         "paths": {
-            "@php-beam/*": ["./*"]
+            "@/*": ["./*"],
+            "@employees/*": ["packages/employees/*"]
         },
         "skipLibCheck": true
     },
@@ -28,7 +29,8 @@
         "./packages/**/*.ts",
         "./packages/**/*.tsx",
         "./resources/**/*.ts",
-        "./resources/**/*.tsx"
+        "./resources/**/*.tsx",
+        "resources/js/app.jsx"
     ],
     "exclude": ["node_modules", "**/node_modules"]
 }
