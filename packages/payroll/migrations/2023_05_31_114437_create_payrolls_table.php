@@ -7,20 +7,16 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('payrolls', function (Blueprint $table) {
             $table->id();
-            $table->integer('score');
-            $table->text('comment');
-
-            $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->on('employees')->references('id');
-
+            $table->string('frequency');
+            $table->string('flush_at');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('payrolls');
     }
 };

@@ -1,10 +1,10 @@
 <?php
 
-namespace Lifespikes\Reviews;
+namespace Lifespikes\Payroll;
 
 use Illuminate\Support\ServiceProvider;
 
-class ReviewsServiceProvider extends ServiceProvider
+class PayrollServiceProvider extends ServiceProvider
 {
     public function register(): void
     {

@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import MainLayout from "../../Components/Shared/MainLayout";
+import MainLayout from "../../components/Shared/main-layout";
 
 const Test = () => {
     return (

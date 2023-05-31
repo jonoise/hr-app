@@ -42,6 +42,8 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Lifespikes\\Employees\\": "packages/employees/src",
+            "Lifespikes\\Pay\\": "packages/pay/src",
+            "Lifespikes\\Payroll\\": "packages/payroll/src",
             "Lifespikes\\Reviews\\": "packages/reviews/src"
         }
     },
@@ -69,7 +71,9 @@
         "laravel": {
             "providers": [
                 "Lifespikes\\Employees\\EmployeesServiceProvider",
-                "Lifespikes\\Reviews\\ReviewsServiceProvider"
+                "Lifespikes\\Reviews\\ReviewsServiceProvider",
+                "Lifespikes\\Payroll\\PayrollServiceProvider",
+                "Lifespikes\\Pay\\PayServiceProvider"
             ]
         },
         "monorepo-cli": {
@@ -92,6 +96,8 @@
     },
     "replace": {
         "lifespikes/employees": "self.version",
+        "lifespikes/pay": "self.version",
+        "lifespikes/payroll": "self.version",
         "lifespikes/reviews": "self.version"
     },
     "minimum-stability": "stable",

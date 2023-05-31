@@ -18,8 +18,11 @@ use Lifespikes\Employees\Http\Controllers\EmployeeController;
 
 
 
-Route::get('/', function () {
-return Inertia::render('Home/Index');
+Route::get('/', function () { return Inertia::render('Home/Index'); });
+
+Route::get('/dashboard', function () {
+    $employees = Employee::all();
+    return Inertia::render('Home/Dashboard', ['employees' => $employees]);
 });
 
 Route::resources([

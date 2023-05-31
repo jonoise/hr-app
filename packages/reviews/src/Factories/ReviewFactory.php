@@ -11,7 +11,9 @@ class ReviewFactory extends Factory
     public function definition(): array
     {
         return [
-            'employee_id' => 1
+            'score' => fake()->numberBetween(1, 10),
+            'comment' => fake()->paragraph(),
+            'employee_id' => fake()->numberBetween(1, 10),
         ];
     }
 }

@@ -1,6 +1,6 @@
 import EmployeeRow from "@/packages/employees/resources/components/EmployeeRow";
-import { FC, useEffect, useState } from "react";
-import MainLayout from "../../Components/Shared/MainLayout";
+import { FC, useState } from "react";
+import MainLayout from "../../components/Shared/main-layout";
 
 const Show: FC<{ employees: EmployeeI[] }> = ({ employees }) => {
     const [emps, setEmployees] = useState(employees);

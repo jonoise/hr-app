@@ -15,8 +15,9 @@ class EmployeeFactory extends Factory
         return [
             'name' => fake()->name(),
             'phone' => fake()->phoneNumber(),
+            'email' => fake()->email(),
             'probatory' => true,
-            'hired' => fake()->date(),
+            'hired' => false,
         ];
     }
 }

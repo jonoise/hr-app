@@ -11,8 +11,11 @@ return new class extends Migration {
             $table->id();
             $table->string('name');
             $table->string('phone');
-            $table->date('hired');
+            $table->string('email');
             $table->boolean('probatory');
+            $table->boolean('hired');
+            $table->date('hired_at')->nullable();
+            $table->bigInteger('payroll_id')->nullable();
 
             $table->timestamps();
         });

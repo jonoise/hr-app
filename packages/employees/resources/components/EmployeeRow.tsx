@@ -1,4 +1,4 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Input } from "@chakra-ui/react";
 import React, { FC, useState } from "react";
 
 type Props = {
@@ -30,7 +30,7 @@ const EmployeeRow: FC<Props> = (props) => {
         <Box w="100%" bg={"red"} color={"white"}>
             {editing ? (
                 <form onSubmit={saveEmployee}>
-                    <input
+                    <Input
                         value={name}
                         onChange={(e) => {
                             setName(e.target.value);

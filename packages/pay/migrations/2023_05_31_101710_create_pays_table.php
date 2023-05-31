@@ -7,13 +7,14 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('pays', function (Blueprint $table) {
             $table->id();
-            $table->integer('score');
-            $table->text('comment');
+            $table->integer('salary');
+            $table->integer('units');
+            $table->string('type');
 
             $table->unsignedBigInteger('employee_id');
-            $table->foreign('employee_id')->on('employees')->references('id');
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelete('cascade');
 
             $table->timestamps();
         });
@@ -21,6 +22,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('pays');
     }
 };

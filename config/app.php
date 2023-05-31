@@ -169,9 +169,12 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
         // MY PROVIDERS
         Lifespikes\Employees\EmployeesServiceProvider::class,
         Lifespikes\Reviews\ReviewsServiceProvider::class,
+        Lifespikes\Pay\PayServiceProvider::class,
+        Lifespikes\Payroll\PayrollServiceProvider::class,
 
 
 

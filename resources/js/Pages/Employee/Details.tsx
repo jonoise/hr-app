@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import MainLayout from "../../Components/Shared/MainLayout";
+import MainLayout from "../../components/Shared/main-layout";
 import { Flex } from "@chakra-ui/react";
 
 const Details: FC<{ employee: EmployeeI }> = (props) => {

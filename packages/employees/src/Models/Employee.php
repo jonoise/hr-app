@@ -4,8 +4,12 @@ namespace Lifespikes\Employees\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Lifespikes\Employees\Factories\EmployeeFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\TypeScriptTransformer\Attributes\TypeScript;
+use Lifespikes\Employees\Factories\EmployeeFactory;
+use Lifespikes\Pay\Models\Pay;
+use Lifespikes\Payroll\Models\Payroll;
+use Lifespikes\Reviews\Models\Review;
 
 
 /**
@@ -25,10 +29,30 @@ class Employee extends Model
         'probatory',
     ];
 
-    protected $attributes = [
-        'hired' => false,
-        'probatory' => true,
+    protected $casts = [
+        'hired' => 'boolean',
+        'probatory' => 'boolean',
     ];
+
+    protected $attributes = [
+        'probatory' => true,
+        'hired' => false,
+    ];
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function pay()
+    {
+        return $this->hasOne(Pay::class);
+    }
+
+    public function payroll():BelongsTo
+    {
+        return $this->belongsTo(Payroll::class);
+    }
 
     protected static function factory():EmployeeFactory{
         return EmployeeFactory::new();

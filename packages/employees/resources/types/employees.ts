@@ -1,9 +1,12 @@
 interface EmployeeI {
-    id: number;
+    id?: number;
     name: string;
     phone: string;
-    hired: string;
+    hired: boolean;
     probatory: boolean;
-    created_at: string;
-    updated_at: string;
+    email: string;
+    hired_at?: string;
+    payroll_id?: number;
+    created_at?: string;
+    updated_at?: string;
 }
