@@ -1,8 +1,10 @@
 import { Button, Flex, Input, Select, Stack, Text } from "@chakra-ui/react";
 import React, { FC } from "react";
+import Inertia, { router } from "@inertiajs/react";
 
 type Props = {
     employee?: EmployeeI;
+    onClose?: () => void;
 };
 
 const defaultEmployee: EmployeeI = {
@@ -25,13 +27,22 @@ export const EmployeeForm: FC<Props> = (props) => {
         props.employee || defaultEmployee
     );
 
+    console.log(props);
+
     const [pay, setPay] = React.useState(defaultPay);
 
     return (
         <form
             onSubmit={(e) => {
                 e.preventDefault();
-                console.log({ employee, pay });
+                if (props?.employee) {
+                    router.put(`/employees/${props.employee.id}`, {
+                        employee,
+                    } as any);
+                } else {
+                    router.post("/employees", { employee, pay } as any);
+                }
+                props.onClose && props.onClose();
             }}
         >
             <Stack pb={4} fontSize={"xs"}>
@@ -70,7 +81,7 @@ export const EmployeeForm: FC<Props> = (props) => {
                         <Text>Salary</Text>
                         <Input
                             name="salary"
-                            value={0}
+                            value={pay.salary}
                             onChange={(e) =>
                                 setPay({
                                     ...pay,
@@ -82,7 +93,7 @@ export const EmployeeForm: FC<Props> = (props) => {
                         <Text>Units</Text>
                         <Input
                             name="units"
-                            value={0}
+                            value={pay.units}
                             onChange={(e) =>
                                 setPay({
                                     ...pay,

@@ -175,6 +175,7 @@ return [
         Lifespikes\Reviews\ReviewsServiceProvider::class,
         Lifespikes\Pay\PayServiceProvider::class,
         Lifespikes\Payroll\PayrollServiceProvider::class,
+        Lifespikes\Expenses\ExpensesServiceProvider::class,
 
 
 

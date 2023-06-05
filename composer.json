@@ -42,6 +42,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Lifespikes\\Employees\\": "packages/employees/src",
+            "Lifespikes\\Expenses\\": "packages/expenses/src",
             "Lifespikes\\Pay\\": "packages/pay/src",
             "Lifespikes\\Payroll\\": "packages/payroll/src",
             "Lifespikes\\Reviews\\": "packages/reviews/src"
@@ -73,7 +74,8 @@
                 "Lifespikes\\Employees\\EmployeesServiceProvider",
                 "Lifespikes\\Reviews\\ReviewsServiceProvider",
                 "Lifespikes\\Payroll\\PayrollServiceProvider",
-                "Lifespikes\\Pay\\PayServiceProvider"
+                "Lifespikes\\Pay\\PayServiceProvider",
+                "Lifespikes\\Expenses\\ExpensesServiceProvider"
             ]
         },
         "monorepo-cli": {
@@ -96,6 +98,7 @@
     },
     "replace": {
         "lifespikes/employees": "self.version",
+        "lifespikes/expenses": "self.version",
         "lifespikes/pay": "self.version",
         "lifespikes/payroll": "self.version",
         "lifespikes/reviews": "self.version"

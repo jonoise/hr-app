@@ -26,15 +26,19 @@ export const DashboardSidebar = () => {
 
 const links = [
     {
-        name: "Employees",
+        name: "Dashboard",
         href: "/dashboard",
     },
     {
-        name: "Expenses",
-        href: "/dashboard/expenses",
+        name: "Employees",
+        href: "/employees",
     },
     {
         name: "Reviews",
-        href: "/dashboard/reviews",
+        href: "/reviews",
+    },
+    {
+        name: "Expenses",
+        href: "/expenses",
     },
 ];

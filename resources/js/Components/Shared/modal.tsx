@@ -6,18 +6,25 @@ import {
     ModalBody,
     ModalCloseButton,
     useDisclosure,
-    Button,
-    ButtonProps,
     BoxProps,
     Box,
+    ModalProps,
 } from "@chakra-ui/react";
-import { FC } from "react";
+import React, {
+    Children,
+    FC,
+    JSXElementConstructor,
+    ReactElement,
+    cloneElement,
+    isValidElement,
+} from "react";
 
 type Props = {
     title: string;
     buttonLabel: string | React.ReactNode;
     buttonProps?: BoxProps;
-    children: React.ReactNode;
+    modalProps?: BoxProps & { size: ModalProps["size"] };
+    children: ReactElement<any, string | JSXElementConstructor<any>>;
 };
 
 export const Modal: FC<Props> = (props) => {
@@ -28,12 +35,21 @@ export const Modal: FC<Props> = (props) => {
                 {props.buttonLabel}
             </Box>
 
-            <ChakraModal isOpen={isOpen} onClose={onClose}>
+            <ChakraModal
+                {...(props.modalProps as any)}
+                isOpen={isOpen}
+                onClose={onClose}
+            >
                 <ModalOverlay />
                 <ModalContent>
                     <ModalHeader>{props.title}</ModalHeader>
                     <ModalCloseButton />
-                    <ModalBody>{props.children}</ModalBody>
+                    <ModalBody>
+                        {Children.map(props.children, (child) => {
+                            if (!isValidElement(child)) return;
+                            return cloneElement(child, { onClose } as any);
+                        })}
+                    </ModalBody>
                 </ModalContent>
             </ChakraModal>
         </>

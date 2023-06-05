@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Tr, Td, Stack, Tooltip, Box, Text, Flex } from "@chakra-ui/react";
+
 import {
     BsFileEarmarkBarGraph,
     BsFileEarmarkPerson,
@@ -7,8 +8,10 @@ import {
 } from "react-icons/bs";
 
 import dayjs from "dayjs";
-import { Modal } from "../Shared/modal";
+import { Modal } from "../../../../resources/js/components/Shared/modal";
 import { EmployeeForm } from "@/packages/employees/resources/components/employee-form";
+import { EmployeeReviewList } from "../../../../resources/js/components/dashboard/employee-review-list";
+import { ReviewForm } from "@/packages/reviews/resources/components/form";
 
 type Props = {
     employee: EmployeeI;
@@ -50,23 +53,43 @@ export const EmployeeRow: FC<Props> = ({ employee }) => {
                 </Flex>
             </Td>
             <Td>
-                {" "}
                 {employee.hired
                     ? dayjs(employee.hired_at).format("MMMM D, YYYY")
                     : "Not Hired."}
             </Td>
             <Td>
                 <Stack direction={"row"}>
-                    <Tooltip label={"Perform Review"} placement="top">
-                        <Box cursor={"pointer"} p={2} mr="2">
-                            <BsFileEarmarkPerson />
-                        </Box>
-                    </Tooltip>
-                    <Tooltip label={"View Employee Reviews"} placement="top">
-                        <Box cursor={"pointer"} p={2} mr="2">
-                            <BsFileEarmarkBarGraph />
-                        </Box>
-                    </Tooltip>
+                    <Modal
+                        title={`Perform Review for ${employee.name}`}
+                        buttonLabel={
+                            <Tooltip
+                                label={"Perform Employee Review"}
+                                placement="top"
+                            >
+                                <Box cursor={"pointer"} p={2} mr="2">
+                                    <BsFileEarmarkPerson />
+                                </Box>
+                            </Tooltip>
+                        }
+                    >
+                        <ReviewForm />
+                    </Modal>
+                    <Modal
+                        title="Employee Reviews"
+                        modalProps={{ size: "2xl" }}
+                        buttonLabel={
+                            <Tooltip
+                                label={"View Employee Reviews"}
+                                placement="top"
+                            >
+                                <Box cursor={"pointer"} p={2} mr="2">
+                                    <BsFileEarmarkBarGraph />
+                                </Box>
+                            </Tooltip>
+                        }
+                    >
+                        <EmployeeReviewList employeeId={employee.id!} />
+                    </Modal>
 
                     <Modal
                         title={"Edit Employee"}

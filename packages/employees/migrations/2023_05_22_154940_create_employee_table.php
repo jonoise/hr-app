@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->date('hired_at')->nullable();
             $table->bigInteger('payroll_id')->nullable();
 
+
             $table->timestamps();
         });
     }
