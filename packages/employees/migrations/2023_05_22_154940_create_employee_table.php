@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->boolean('probatory');
             $table->boolean('hired');
             $table->date('hired_at')->nullable();
+            $table->date('last_review')->nullable();
             $table->bigInteger('payroll_id')->nullable();
 
 

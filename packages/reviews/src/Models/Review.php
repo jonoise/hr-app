@@ -11,11 +11,21 @@ class Review extends Model
     protected $fillable = [
         'score',
         'comment',
+        'pending',
+        'employee_id',
     ];
 
     protected $attributes = [
         'score' => 0,
         'comment' => '',
+        'pending' => false,
+
+    ];
+
+    protected $casts = [
+        'score' => 'integer',
+        'comment' => 'string',
+        'pending' => 'boolean',
     ];
 
     public function employee()

@@ -4,6 +4,10 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Lifespikes\Employees\Cron\EmployeeCron;
+use Lifespikes\Employees\Models\Employee;
+use Lifespikes\Expenses\Models\Expense;
+use Lifespikes\Reports\Models\Report;
 
 class Kernel extends ConsoleKernel
 {
@@ -12,7 +16,27 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            $emps = Employee::where('last_review', '<', now()->subYear())->get();
+            foreach ($emps as $emp) {
+                $emp->createPendingReview();
+            }
+        })->everyMinute();
+
+        $schedule->call(function () {
+            $start = now()->subMonth();
+            $end = now();
+            $total = Expense::whereBetween('created_at', [$start, $end])->get()->sum('amount');
+            Report::create([
+                'start_period' => $start,
+                'end_period' => $end,
+                'type' => 'monthly',
+                'total' => $total,
+            ]);
+        })->everyMinute();
+
+        $schedule->call(function () {})->quarterly();
+        $schedule->call(function () {})->yearly();
     }
 
     /**

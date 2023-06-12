@@ -72,8 +72,9 @@ export const EmployeeRow: FC<Props> = ({ employee }) => {
                             </Tooltip>
                         }
                     >
-                        <ReviewForm />
+                        <ReviewForm employee_id={employee.id!} />
                     </Modal>
+
                     <Modal
                         title="Employee Reviews"
                         modalProps={{ size: "2xl" }}

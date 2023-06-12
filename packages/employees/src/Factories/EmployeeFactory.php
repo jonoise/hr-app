@@ -18,6 +18,7 @@ class EmployeeFactory extends Factory
             'email' => fake()->email(),
             'probatory' => true,
             'hired' => false,
+            'last_review' => fake()->dateTimeBetween('-1 year', 'now'),
         ];
     }
 }

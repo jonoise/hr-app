@@ -5,6 +5,7 @@ import { router } from "@inertiajs/react";
 
 type Props = {
     review?: ReviewI;
+    employee_id: number;
     onClose?: () => void;
 };
 
@@ -22,7 +23,10 @@ export const ReviewForm: FC<Props> = (props) => {
         e.preventDefault();
         props.review
             ? router.put(`/reviews/${review.id}`, review as any)
-            : router.post(`/reviews`, review as any);
+            : router.post(`/reviews`, {
+                  ...review,
+                  employee_id: props.employee_id,
+              } as any);
         props.onClose && props.onClose();
     };
 

@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->id();
             $table->integer('score');
             $table->text('comment');
+            $table->boolean('pending')->default(false);
 
             $table->unsignedBigInteger('employee_id');
             $table->foreign('employee_id')->on('employees')->references('id');

@@ -24,7 +24,6 @@ type Props = {
 
 const ShowExpenses: FC<Props> = (props) => {
     const { expenses } = props;
-    console.log(expenses);
     return (
         <MainLayout>
             <Flex position={"relative"}>

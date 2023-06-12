@@ -27,7 +27,8 @@ class Employee extends Model
         'phone',
         'hired',
         'probatory',
-        'email'
+        'email',
+        'last_review'
     ];
 
     protected $casts = [
@@ -39,6 +40,18 @@ class Employee extends Model
         'probatory' => true,
         'hired' => false,
     ];
+
+    public function createPendingReview()
+    {
+        $this->last_review = now();
+        $this->save();
+
+        $this->reviews()->create([
+            'pending' => true,
+            'score' => 0,
+            'comment' => '',
+        ]);
+    }
 
     public function reviews()
     {

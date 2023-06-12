@@ -45,6 +45,7 @@
             "Lifespikes\\Expenses\\": "packages/expenses/src",
             "Lifespikes\\Pay\\": "packages/pay/src",
             "Lifespikes\\Payroll\\": "packages/payroll/src",
+            "Lifespikes\\Reports\\": "packages/reports/src",
             "Lifespikes\\Reviews\\": "packages/reviews/src"
         }
     },
@@ -73,6 +74,7 @@
             "providers": [
                 "Lifespikes\\Employees\\EmployeesServiceProvider",
                 "Lifespikes\\Reviews\\ReviewsServiceProvider",
+                "Lifespikes\\Reports\\ReportsServiceProvider",
                 "Lifespikes\\Payroll\\PayrollServiceProvider",
                 "Lifespikes\\Pay\\PayServiceProvider",
                 "Lifespikes\\Expenses\\ExpensesServiceProvider"
@@ -101,6 +103,7 @@
         "lifespikes/expenses": "self.version",
         "lifespikes/pay": "self.version",
         "lifespikes/payroll": "self.version",
+        "lifespikes/reports": "self.version",
         "lifespikes/reviews": "self.version"
     },
     "minimum-stability": "stable",

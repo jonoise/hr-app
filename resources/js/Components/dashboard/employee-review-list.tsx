@@ -12,10 +12,9 @@ export const EmployeeReviewList: FC<Props> = (props) => {
         `/employees/${props.employeeId}/reviews`
     );
 
-    console.log(reviews);
-
     return (
         <Stack>
+            {reviews?.length === 0 && <Text>No reviews yet.</Text>}
             {reviews?.map((review) => (
                 <Stack key={review.id} p={2} bg={"gray.100"} rounded={"md"}>
                     <Text>Rating: {review.score}</Text>

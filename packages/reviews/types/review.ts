@@ -3,6 +3,7 @@ export interface ReviewI {
     employee_id?: number;
     comment: string;
     score: number;
+    pending?: boolean;
     createdAt?: string;
     updatedAt?: string;
     employee?: EmployeeI;

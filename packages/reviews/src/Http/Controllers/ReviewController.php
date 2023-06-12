@@ -13,7 +13,10 @@ class ReviewController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('Reviews/Index', [
-            'reviews' => Review::with('employee')->get(),
+            'reviews' => Review::
+            orderBy('created_at', 'DESC')
+            ->with('employee')
+            ->get(),
         ]);
     }
 
@@ -34,6 +37,7 @@ class ReviewController extends Controller
         $review = Review::find($id);
         $review->score = $request->score;
         $review->comment = $request->comment;
+        $review->pending = false;
         $review->save();
 
         return Redirect::back();
